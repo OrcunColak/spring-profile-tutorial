@@ -1,16 +1,17 @@
 package com.colak.springprofiletutorial;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
-class ProfileNameProviderTest {
+@ActiveProfiles("dev")
+class DevProfileNameProviderTest {
 
     @Autowired
     private ProfileNameProvider profileNameProvider;
@@ -21,19 +22,19 @@ class ProfileNameProviderTest {
     @Test
     void testGetActiveProfileName() {
         String result = profileNameProvider.getActiveProfileName();
-        assertEquals("local", result);
+        assertEquals("dev", result);
     }
 
     @Test
     void testGetMyValue() {
         String result = profileNameProvider.getMyValue();
-        assertEquals("application", result);
+        assertEquals("dev-application", result);
     }
 
     @Test
     void testMyComponent() {
-        assertThrows(NoSuchBeanDefinitionException.class,
-                () -> applicationContext.getBean(MyComponent.class)
-        );
+        MyComponent myComponent = applicationContext.getBean(MyComponent.class);
+        assertNotNull(myComponent);
+
     }
 }

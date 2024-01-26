@@ -5,12 +5,14 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-class ProfileNameProviderTest {
+@ActiveProfiles("test")
+class TestProfileNameProviderTest {
 
     @Autowired
     private ProfileNameProvider profileNameProvider;
@@ -21,13 +23,13 @@ class ProfileNameProviderTest {
     @Test
     void testGetActiveProfileName() {
         String result = profileNameProvider.getActiveProfileName();
-        assertEquals("local", result);
+        assertEquals("test", result);
     }
 
     @Test
     void testGetMyValue() {
         String result = profileNameProvider.getMyValue();
-        assertEquals("application", result);
+        assertEquals("test-application", result);
     }
 
     @Test
@@ -35,5 +37,6 @@ class ProfileNameProviderTest {
         assertThrows(NoSuchBeanDefinitionException.class,
                 () -> applicationContext.getBean(MyComponent.class)
         );
+
     }
 }
