@@ -21,4 +21,6 @@ https://medium.com/@r.ali.ashik/spring-boot-property-file-best-practices-db1b26c
 mvn spring-boot:run '-Dspring-boot.run.profiles=dev'
 or
 java -jar my-app.jar --spring.profiles.active=dev
+or
+java -D"spring.profiles.active=dev" -jar .\spring-profile-tutorial-0.0.1-SNAPSHOT.jar 
 ```
