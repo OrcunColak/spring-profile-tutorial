@@ -12,6 +12,7 @@ public class ProfileNameProvider {
 
     private final Environment environment;
 
+    // This is just to test that correct profile is loaded
     @Getter
     @Value("${my-value}")
     String myValue;

@@ -2,10 +2,11 @@
 # Set SPRING_PROFILES_ACTIVE environment variable
 spring:
   profiles:
-    active: local
+    active: @spring.profiles.active@
 
 my-value: application
 ---
+# This is an example for a profile in the same file
 spring:
   config:
     activate:
