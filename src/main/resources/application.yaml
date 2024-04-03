@@ -1,10 +1,15 @@
+# You can activate profiles using the --spring.profiles.active command-line option.
 # --spring.profiles.active=dev
-# Set SPRING_PROFILES_ACTIVE environment variable
 spring:
   profiles:
+    # Set SPRING_PROFILES_ACTIVE environment variable. Check the pom.xml
     active: @spring.profiles.active@
+    # Profiles can inherit configurations from other profiles. For example, a production profile can inherit properties from the default profile.
+    include: default
 
 my-value: application
+# Since default profile is always inherited, this value is always available
+my-inherited-value : inherited-message
 ---
 # This is an example for a profile in the same file
 spring:

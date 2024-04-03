@@ -17,6 +17,10 @@ public class ProfileNameProvider {
     @Value("${my-value}")
     String myValue;
 
+    @Getter
+    @Value("${my-inherited-value}")
+    String myInheritedValue;
+
     public String getActiveProfileName() {
         return String.join(",", environment.getActiveProfiles());
     }

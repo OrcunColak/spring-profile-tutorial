@@ -3,6 +3,11 @@
 The original idea is from  
 https://medium.com/@sharadblog/how-do-i-access-my-profile-name-in-springboot-application-63b4bd229e2b
 
+# Profile Inheritance
+
+The original idea is from  
+https://nirajtechi.medium.com/playing-with-spring-boot-profile-38e8c490b27b
+
 # @Profile Annotation
 
 The original idea is from  

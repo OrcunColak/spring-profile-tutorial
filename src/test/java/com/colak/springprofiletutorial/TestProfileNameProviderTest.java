@@ -23,13 +23,19 @@ class TestProfileNameProviderTest {
     @Test
     void testGetActiveProfileName() {
         String result = profileNameProvider.getActiveProfileName();
-        assertEquals("test", result);
+        assertEquals("default,test", result);
     }
 
     @Test
     void testGetMyValue() {
         String result = profileNameProvider.getMyValue();
         assertEquals("test-application", result);
+    }
+
+    @Test
+    void getMyInheritedValue() {
+        String result = profileNameProvider.getMyInheritedValue();
+        assertEquals("inherited-message", result);
     }
 
     @Test
